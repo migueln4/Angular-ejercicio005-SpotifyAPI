@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
 
+//Para poder hacer peticiones HTTP también hay que hacer un import. Esto se usa para poder coger información desde fuera a APIs externas.
+import {HttpClientModule} from '@angular/common/http'; //Este es el módulo que puede relizar las peticiones HTTP.
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
@@ -18,9 +21,10 @@ import { ROUTES } from './app.routes'; //Este es el archivo en el que están tod
     ArtistaComponent,
     NavbarComponent
   ],
-  imports: [
+  imports: [ //Siempre que ponga "Module" va en la parte de los imports
     BrowserModule,
-    RouterModule.forRoot(ROUTES,{useHash:true}) //Hay que poner arquí lo de las rutas, con esta función y asegurarse de que se le pasa por parámetro la constante que se ha definido en el archivo app.routes.ts. Se le pone el hash activo.
+    RouterModule.forRoot(ROUTES,{useHash:true}), //Hay que poner arquí lo de las rutas, con esta función y asegurarse de que se le pasa por parámetro la constante que se ha definido en el archivo app.routes.ts. Se le pone el hash activo.
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
