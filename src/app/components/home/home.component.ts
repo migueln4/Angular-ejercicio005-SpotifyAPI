@@ -8,10 +8,15 @@ import { SpotifyService } from '../../services/spotify.service';
 })
 export class HomeComponent implements OnInit {
 
-
+  nuevosLanzamientos:any[] = [];
 
   constructor(private spotify:SpotifyService) {
-      this.spotify.getNewReleases();
+
+      this.spotify.getNewReleases() //Es mucho mejor hacer el suscribe en el componente para poder tratar los datos directamente aquí.
+          .subscribe( (datos:any) => { //Se debe especificar que los datos que vienen de la petición son del tipo any para que luego no dé errores a la hora de ir indagando dentro de sus propiedades
+            console.log(datos.albums.items);
+            this.nuevosLanzamientos = datos.albums.items; //Sabemos que esto es así porque hemos comprobado cómo está hecho en la consola.
+          })
    }
 
   ngOnInit() {

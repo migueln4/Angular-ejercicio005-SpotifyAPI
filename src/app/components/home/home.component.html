@@ -1,1 +1,10 @@
-<h1>Estás en home</h1>
+<div class="card-columns">
+    <!--Para poder rellenar los datos que vienen aquí entro hay que explorar el JSON que se ha generado en la petición GET-->
+    <div class="card" *ngFor="let album of nuevosLanzamientos">
+        <img class="card-img-top" [src]="album.images[0].url" [alt]="album.name">
+        <div class="card-body">
+            <h5 class="card-title">{{album.name}}</h5>
+            <p class="card-text"><span class="badge badge-dark" *ngFor="let artista of album.artists">{{artista.name}}</span></p>
+        </div>
+    </div>
+</div>

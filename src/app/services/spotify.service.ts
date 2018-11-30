@@ -16,8 +16,14 @@ export class SpotifyService {
         'Authorization':'Bearer BQB-CM9U4r-1KIHZtlvuroVMLQXEraXVPXGFyl4P1abilXaD4VzxRZWX85qI6GRx-2nN_RU8nqdXGTbT0fw'
       });
 
+      
+      /* --- ASÍ SERÍA UNA PETICIÓN GET PARA QUE MUESTRE LAS COSAS POR LA CONSOLA --- 
+
       this.http.get('https://api.spotify.com/v1/browse/new-releases',{headers}).subscribe(datos => console.log(datos)); //Esta es la estructura básica de cómo se hace una llamada GET a la API de Spotify incorporando unos headers.
 
       //Por defecto, Spotify devuelve siempre los 20 últimos álbumes. Si se quieren añadir más, solo hay que poner: ?limit=N donde n es el número de álbumes que se quieren obtener de la API.
+*/
+
+      return this.http.get('https://api.spotify.com/v1/browse/new-releases',{headers}); //La idea es que el servicio simplemente consiga esta información y la retorne. Así, desde cualquier sitio que se llame se pueda usar el .suscribe.
    }
 }
