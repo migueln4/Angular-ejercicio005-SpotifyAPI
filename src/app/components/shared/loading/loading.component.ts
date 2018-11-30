@@ -6,8 +6,6 @@ import { Component, OnInit, Input } from '@angular/core';
   styles: []
 })
 export class LoadingComponent implements OnInit {
-
-  @Input() loading:boolean;
   
   constructor() { }
 

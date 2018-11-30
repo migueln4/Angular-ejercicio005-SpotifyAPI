@@ -10,18 +10,22 @@ export class BuscarComponent implements OnInit {
 
   resultadoBusqueda:any[] = [];
 
+  loading:boolean = false;
+
   constructor(private spotify:SpotifyService) { }
 
   ngOnInit() {
   }
 
   busqueda(texto:string) { //Esto es muy parecido a todo lo que ya se ha hecho en el home.component.ts
+    this.loading = true;
     console.log(texto);
     if(texto.length > 0) {//Si no pongo esto, da un error cuando se borra la barra de búsqueda completa.
     this.spotify.getArtista(texto).subscribe( datos => {
         this.resultadoBusqueda = datos;
     })
   }
+  this.loading = false;
   }
 
 }
