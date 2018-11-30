@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TarjetasComponent implements OnInit {
 
   @Input() elementos:any[] = [];
+  @Input() loading:boolean;
 
   constructor() { }
 
