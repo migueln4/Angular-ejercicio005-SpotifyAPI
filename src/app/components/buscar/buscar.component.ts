@@ -17,10 +17,11 @@ export class BuscarComponent implements OnInit {
 
   busqueda(texto:string) { //Esto es muy parecido a todo lo que ya se ha hecho en el home.component.ts
     console.log(texto);
-    this.spotify.getArtista(texto).subscribe( (datos:any) => {
-        this.resultadoBusqueda = datos.artists.items;
-        console.log(this.resultadoBusqueda);
+    if(texto.length > 0) {//Si no pongo esto, da un error cuando se borra la barra de búsqueda completa.
+    this.spotify.getArtista(texto).subscribe( datos => {
+        this.resultadoBusqueda = datos;
     })
+  }
   }
 
 }

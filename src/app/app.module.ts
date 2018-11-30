@@ -5,13 +5,18 @@ import {RouterModule} from '@angular/router';
 //Para poder hacer peticiones HTTP también hay que hacer un import. Esto se usa para poder coger información desde fuera a APIs externas.
 import {HttpClientModule} from '@angular/common/http'; //Este es el módulo que puede relizar las peticiones HTTP.
 
+//Importar componentes
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
 import { ArtistaComponent } from './components/artista/artista.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 
+//Importar las rutas
 import { ROUTES } from './app.routes'; //Este es el archivo en el que están todas las rutas
+
+//Importar las rutas
+import { NoimagePipe } from './pipes/noimage.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,8 @@ import { ROUTES } from './app.routes'; //Este es el archivo en el que están tod
     HomeComponent,
     BuscarComponent,
     ArtistaComponent,
-    NavbarComponent
+    NavbarComponent,
+    NoimagePipe
   ],
   imports: [ //Siempre que ponga "Module" va en la parte de los imports
     BrowserModule,
