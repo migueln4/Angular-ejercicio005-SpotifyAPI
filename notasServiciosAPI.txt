@@ -1,0 +1,5 @@
+Cada vez que se trate de tener comunicación con una API externa, lo mejor es unificarlo todo en un servicio que haga esto.
+
+Así es como se crea un nuevo servicio desde la consola:
+
+ng g s services/spotify --spec=false

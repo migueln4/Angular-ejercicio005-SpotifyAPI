@@ -1,0 +1,29 @@
+Lo que hay que hacer para pedir información a la API de Spotify es:
+
+- Hacer una petición del token de acceso:
+Es una petición POST a https://accounts.spotify.com/api/token
+
+Necesita los siguientes parámetros, que en el Postman se meten en:
+Body -> x-www-form-urlencoded
+
+Estos son los parámetros:
+grant_type : client_credentials
+client_id : Te la da, después de hacer login en: https://developer.spotify.com/dashboard
+client_secret : https://developer.spotify.com/dashboard
+
+¡¡Ojo a los espacios, que pueden hacer que casque!!
+
+El token que se recibe expira cada hora.
+
+-----------------------
+
+Para hacer peticiones get a la API de Spotify:
+https://developer.spotify.com/console/browse/
+
+En el Postman hay que poner el endpoint que nos dé en esa web y hay que poner:
+
+Headers
+
+Authorization : Bearer el token que nos ha devuelto el POST anterior
+
+Es importante dejar el espacio entre Bearer y el token.
