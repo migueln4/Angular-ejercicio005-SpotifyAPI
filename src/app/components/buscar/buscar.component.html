@@ -1,3 +1,16 @@
-<p>
-  buscar works!
-</p>
+<div class="row">
+    <div class="col">
+        <!--Lo que está en # es una variable local de Angular que se crea desde el HTML. Eso representa la caja completa, por eso hay que hacer referencia al .value -->
+        <input #textoIntroducido type="text" (keyup)="busqueda(textoIntroducido.value)" class="form-control" placeholder="Buscar artista">
+    </div>
+</div>
+
+<div class="card-columns m-4">
+    <!--Para poder rellenar los datos que vienen aquí entro hay que explorar el JSON que se ha generado en la petición GET-->
+    <div class="card" *ngFor="let artista of resultadoBusqueda">
+        <img class="card-img-top" [src]="artista.images[0].url" [alt]="artista.name">
+        <div class="card-body">
+            <h5 class="card-title">{{artista.name}}</h5>
+        </div>
+    </div>
+</div>
