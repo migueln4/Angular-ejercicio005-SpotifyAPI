@@ -11,12 +11,16 @@ import { HomeComponent } from './components/home/home.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
 import { ArtistaComponent } from './components/artista/artista.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
+import { LoadingComponent } from './components/shared/loading/loading.component';
 
 //Importar las rutas
 import { ROUTES } from './app.routes'; //Este es el archivo en el que están todas las rutas
 
 //Importar las rutas
 import { NoimagePipe } from './pipes/noimage.pipe';
+
+
 
 @NgModule({
   declarations: [
@@ -25,7 +29,9 @@ import { NoimagePipe } from './pipes/noimage.pipe';
     BuscarComponent,
     ArtistaComponent,
     NavbarComponent,
-    NoimagePipe
+    NoimagePipe,
+    TarjetasComponent,
+    LoadingComponent
   ],
   imports: [ //Siempre que ponga "Module" va en la parte de los imports
     BrowserModule,

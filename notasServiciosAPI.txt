@@ -3,3 +3,10 @@ Cada vez que se trate de tener comunicación con una API externa, lo mejor es uni
 Así es como se crea un nuevo servicio desde la consola:
 
 ng g s services/spotify --spec=false
+
+---------------------
+
+Cómo se optimiza todo:
+
+Se crea una función en el servicio que se llame getQuery() y que reciba un string al que se le llama query. Dentro, se declara una constante con la parte de la URL que se repite en cada una de las peticiones que se está haciendo.
+

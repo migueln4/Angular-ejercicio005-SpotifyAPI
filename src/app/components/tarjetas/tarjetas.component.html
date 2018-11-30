@@ -1,0 +1,13 @@
+<app-loading></app-loading>
+
+<div class="card-columns m-4">
+    <!--Para poder rellenar los datos que vienen aquí entro hay que explorar el JSON que se ha generado en la petición GET-->
+    <div class="card" *ngFor="let elemento of elementos">
+        <!--La idea es que la imagen que llega de los artistas debe validarse porque puede no venir nada y dar un error en la consola y mostrar cosas raras en el HTML -->
+        <img class="card-img-top" [src]="elemento.images | noimage" [alt]="elemento.name">
+        <div class="card-body">
+            <h5 class="card-title">{{elemento.name}}</h5>
+            <p class="card-text"><span class="badge badge-dark" *ngFor="let artista of elemento.artists">{{artista.name}}</span></p>
+        </div>
+    </div>
+</div>

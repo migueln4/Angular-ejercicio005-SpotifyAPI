@@ -27,3 +27,10 @@ Headers
 Authorization : Bearer el token que nos ha devuelto el POST anterior
 
 Es importante dejar el espacio entre Bearer y el token.
+
+--------------------------
+
+Para hacer búsquedas en la API de Spotify:
+https://developer.spotify.com/console/get-search-item/
+(esta es la URL donde aparece el endpont)
+ 
