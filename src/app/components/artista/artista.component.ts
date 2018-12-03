@@ -27,13 +27,15 @@ export class ArtistaComponent implements OnInit {
   }
 
   getArtista(id:string) {
+    
+    this.loading = true;
+
     this.spotify.getArtista(id)
         .subscribe(artista => {
           console.log(artista);
           this.artista = artista; //Cogemos el objeto que nos manda el servicio y lo guardamos en el objeto que hemos creado en esta clase.
+          this.loading=false; //Esto debe venir dentro de esta función de fecha porque solo se va a poner a false esta variable exactamente cuando se ha cargado el objeto artista que se ha recibido del servicio en la propiedad que se ha declarado en la clase del componente.
         });
-
-    this.loading=false;
   }
 
 }

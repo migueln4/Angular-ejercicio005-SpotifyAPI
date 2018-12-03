@@ -15,7 +15,7 @@ export class SpotifyService {
      const url = `https://api.spotify.com/v1/${query}`;
 
      const headers = new HttpHeaders({
-      'Authorization':'Bearer BQDiS1NQNkx-UYvGj861DvpwodQMgKrix1dub8NaIwclXED1XRLy5NEobB0MmWtE2E7SRQVnVDyqCreOx1E'
+      'Authorization':'Bearer BQCwombRQ3Zf7-ISAgUt2u4-HtaqGrSHMD0Sxpt_fc3Ilzp6eXRVnnJz__jDqJV9xc6m9vBD6qSTQpmPank'
     });
 
     return this.http.get(url,{headers});
@@ -53,7 +53,7 @@ export class SpotifyService {
           }));
           */
 
-      return this.getQuery('browse/new-releases').
+      return this.getQuery('browse/new-releases?country=es'). //Yo le he añadido "?country=es" porque lo he visto en la documentación del API de Spotify.
             pipe(map(datos => datos['albums'].items)); //El getQuery nos va a dar un observable, por eso se le puede pasar por un pipe y filtrar todos los datos para hacer un retorno como el que se espera en el componente.
    }
 
