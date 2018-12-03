@@ -15,7 +15,7 @@ export class SpotifyService {
      const url = `https://api.spotify.com/v1/${query}`;
 
      const headers = new HttpHeaders({
-      'Authorization':'Bearer BQCZnYR4MZ-5XmuX-3Wa9r01az1JdPDcZZUye6nQHYL8knQpeeU6k6M7DnApDe8wDhof2Qw_2zHUEdS1ADE'
+      'Authorization':'Bearer BQDiS1NQNkx-UYvGj861DvpwodQMgKrix1dub8NaIwclXED1XRLy5NEobB0MmWtE2E7SRQVnVDyqCreOx1E'
     });
 
     return this.http.get(url,{headers});
@@ -57,7 +57,7 @@ export class SpotifyService {
             pipe(map(datos => datos['albums'].items)); //El getQuery nos va a dar un observable, por eso se le puede pasar por un pipe y filtrar todos los datos para hacer un retorno como el que se espera en el componente.
    }
 
-   getArtista(texto:string) {
+   getArtistas(texto:string) {
 
       /* ---- ESTO YA NO HACE FALTA PORQUE SE HA OPTIMIZADO AL CREAR EL MÉTODO getQuery ------
 
@@ -77,5 +77,13 @@ export class SpotifyService {
     */
    return this.getQuery(`search?q=${texto}&type=artist&limit=20`).
    pipe(map(datos => datos['artists'].items));
-   } 
+   }
+   
+   //Para saber cómo hay que hacer la petición al endpoint, hay que ir a la web de Spotify.
+   getArtista(id:string) {
+
+    return this.getQuery(`artists/${id}`); //No se le pasa por el map porque ofrece toda la información que necesitamos. Por eso, no hay que mapear nada.
+
+   }
+   
 }

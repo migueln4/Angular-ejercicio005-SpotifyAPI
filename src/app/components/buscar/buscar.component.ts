@@ -21,7 +21,7 @@ export class BuscarComponent implements OnInit {
     this.loading = true;
     console.log(texto);
     if(texto.length > 0) {//Si no pongo esto, da un error cuando se borra la barra de búsqueda completa.
-    this.spotify.getArtista(texto).subscribe( datos => {
+    this.spotify.getArtistas(texto).subscribe( datos => {
         this.resultadoBusqueda = datos;
     })
   }
