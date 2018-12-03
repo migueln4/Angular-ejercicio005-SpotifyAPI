@@ -1,6 +1,8 @@
 <div class="card-columns m-4">
     <!--Para poder rellenar los datos que vienen aquí entro hay que explorar el JSON que se ha generado en la petición GET-->
-    <div class="card" *ngFor="let elemento of elementos">
+    <!--Lo que se hace en el evento clic es invocar a esa función y mandarle el objeto entero que se está seleccionando. El problema es que: en HOME se envía un álbum (con un artista) y en BUSCAR se encuentra un artista. Nosotros solo queremos artistas. Esto hay que manejarlo en el componente.-->
+    <div (click)="verArtista(elemento)" class="card puntero" *ngFor="let elemento of elementos">
+        <!--La clase "puntero" está definidia en el archivo styles.css y lo único que hace es cambiar el puntero para que simule que está pinchando sobre un enlace (con la forma del dedo).-->
         <!--La idea es que la imagen que llega de los artistas debe validarse porque puede no venir nada y dar un error en la consola y mostrar cosas raras en el HTML -->
         <img class="card-img-top" [src]="elemento.images | noimage" [alt]="elemento.name">
         <div class="card-body">
