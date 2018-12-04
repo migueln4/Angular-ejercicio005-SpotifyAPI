@@ -15,7 +15,7 @@ export class SpotifyService {
      const url = `https://api.spotify.com/v1/${query}`;
 
      const headers = new HttpHeaders({
-      'Authorization':'Bearer BQCwombRQ3Zf7-ISAgUt2u4-HtaqGrSHMD0Sxpt_fc3Ilzp6eXRVnnJz__jDqJV9xc6m9vBD6qSTQpmPank'
+      'Authorization':'Bearer BQCjZUUHZ21fPT8tkR13UQ5yiWZ_2hZB7OfhaBwJn-V4XcDWY6Z1m0PUM7lHgkKW1RizN_1pjOMAWXIkqjo'
     });
 
     return this.http.get(url,{headers});
@@ -84,6 +84,10 @@ export class SpotifyService {
 
     return this.getQuery(`artists/${id}`); //No se le pasa por el map porque ofrece toda la información que necesitamos. Por eso, no hay que mapear nada.
 
+   }
+
+   getTopTracksDeArtista(id:string) { //Antes de diseñar este método, hay que ir a la URL https://developer.spotify.com/console/get-artist-top-tracks/ en la que te explica cómo es la petición que se debe hacer. Por ejemplo, esto es importante para ver que hay que añadir obligatoriamente el campo "country=es". Además, así sabemos que esto SÍ hay que mapearlo, no como lo de los artistas.
+     return this.getQuery(`artists/${id}/top-tracks?country=es`).pipe(map(datos => datos['tracks']));
    }
    
 }

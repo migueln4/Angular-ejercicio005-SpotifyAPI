@@ -10,6 +10,7 @@ import { SpotifyService } from 'src/app/services/spotify.service'; //Como vamos 
 export class ArtistaComponent implements OnInit {
 
   artista:any = [];
+  topTracks:any[] = [];
   loading:boolean = true;
 
   constructor(private activatedRoute:ActivatedRoute,
@@ -34,8 +35,23 @@ export class ArtistaComponent implements OnInit {
         .subscribe(artista => {
           console.log(artista);
           this.artista = artista; //Cogemos el objeto que nos manda el servicio y lo guardamos en el objeto que hemos creado en esta clase.
+          this.getTopTracks(id);
           this.loading=false; //Esto debe venir dentro de esta función de fecha porque solo se va a poner a false esta variable exactamente cuando se ha cargado el objeto artista que se ha recibido del servicio en la propiedad que se ha declarado en la clase del componente.
         });
+  }
+
+  getTopTracks(id:string) {
+
+    this.spotify.getTopTracksDeArtista(id)
+        .subscribe(topTracks => {
+          console.log(topTracks);
+          this.topTracks = topTracks;
+        });
+  }
+
+  getUriTrack(track):string {
+    let str = track.uri;
+    return str.substring(str.indexOf(":",str.indexOf(":")+1)+1)
   }
 
 }

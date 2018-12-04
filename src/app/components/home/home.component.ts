@@ -10,10 +10,12 @@ export class HomeComponent implements OnInit {
 
   nuevosLanzamientos:any[] = [];
   loading:boolean;
+  error:boolean; //Esta variable sirve para controlar la presencia de los errores en el Home.
 
   constructor(private spotify:SpotifyService) {
 
     this.loading = true;//Lo primero que hace el programa nada más cargar el componente de Home es establecer esta variable a TRUE.
+    this.error = false;
 
     console.log("Loading: "+this.loading);
 

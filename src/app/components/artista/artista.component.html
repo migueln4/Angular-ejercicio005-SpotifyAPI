@@ -22,4 +22,37 @@
         <button class="btn btn-outline-danger" routerLink="/home">Volver</button>
     </div>
 
+    <div class="row m-4">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Foto</td>
+                        <td>Álbum</td>
+                        <td>Canción</td>
+                        <td>Vista previa</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let track of topTracks">
+                        <td>
+                            <img [src]="track.album.images | noimage" [alt]="track.album.name" class="img-thumb">
+                        </td>
+                        <td><i>{{track.album.name}}</i></td>
+                        <td><i>{{track.name}}</i></td>
+                        <!--De forma sencilla y simplista, solo habría que poner las etiquetas <audio> que tiene HTML5 de forma nativa. Pero Spotify permite un widget, que es lo que al final se está utilizando.-->
+                        <!--<td>
+                            <audio [src]="track.preview_url" controls></audio>
+                        </td>-->
+                        <!-- El widget se obtiene de aquí: https://developer.spotify.com/documentation/widgets/generate/play-button/ -->
+                        <td>
+                            <!--He tenido que hacer una función para que recorte el uri correctamente, ya que en el curso no se hace exactamente igual a como está ahora mismo la API. La solución propuesta es la de llevarse esa url que se le pasa al domseguro como una constante, pero eso haría que esto fuera reutilizable. -->
+                            <iframe [src]="getUriTrack(track) | domseguro:'https://open.spotify.com/embed/track/' " width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </div>

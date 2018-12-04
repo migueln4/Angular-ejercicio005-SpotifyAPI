@@ -17,8 +17,10 @@ import { LoadingComponent } from './components/shared/loading/loading.component'
 //Importar las rutas
 import { ROUTES } from './app.routes'; //Este es el archivo en el que están todas las rutas
 
-//Importar las rutas
+//Pipes
 import { NoimagePipe } from './pipes/noimage.pipe';
+import { DomseguroPipe } from './pipes/domseguro.pipe';
+import { ErrorComponent } from './components/shared/error/error.component';
 
 
 
@@ -31,7 +33,9 @@ import { NoimagePipe } from './pipes/noimage.pipe';
     NavbarComponent,
     NoimagePipe,
     TarjetasComponent,
-    LoadingComponent
+    LoadingComponent,
+    DomseguroPipe,
+    ErrorComponent
   ],
   imports: [ //Siempre que ponga "Module" va en la parte de los imports
     BrowserModule,
