@@ -11,11 +11,13 @@ export class HomeComponent implements OnInit {
   nuevosLanzamientos:any[] = [];
   loading:boolean;
   error:boolean; //Esta variable sirve para controlar la presencia de los errores en el Home.
+  mensajeError:string;
 
   constructor(private spotify:SpotifyService) {
 
     this.loading = true;//Lo primero que hace el programa nada más cargar el componente de Home es establecer esta variable a TRUE.
     this.error = false;
+    this.mensajeError = "";
 
     console.log("Loading: "+this.loading);
 
@@ -25,7 +27,11 @@ export class HomeComponent implements OnInit {
             //this.nuevosLanzamientos = datos.albums.items; //Sabemos que esto es así porque hemos comprobado cómo está hecho en la consola. Con esta opción, hay que especificar que lo que se le pasa al subscribe es (datos:any)
 
             this.nuevosLanzamientos = datos; //Esta solución permite que esto sea mucho más sencillo. Si se quitan todos los comentarios, esto se queda en una función de una sola línea.
-          });
+          }, (errorServicio => {//OJO, que aquí se abre una nueva función de flecha porque además de los datos que se deberían recibir, también se pueden recibir los errores que se han producido en la petición de los nuevos lanzamientos. Cada forma de mostrar los errores por las API son diferentes. Hay que imprimirlo en la consola para cerciorarse de cómo se consigue llegar al mensaje del error.
+            this.error = true;
+            this.mensajeError = errorServicio.error.error.message;
+
+          }));
     this.loading = false; //Cuando llega a esta línea es porque ya ha cargado toda la información del getNewReleases, así que el loading se vuelve a pone a false.
     console.log("Loading: "+this.loading);
    }
